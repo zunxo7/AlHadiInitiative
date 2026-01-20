@@ -137,18 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ---------------------------------------------------------
     // Delayed Navigation Links (Mobile only with shorter delay)
     // ---------------------------------------------------------
-    const delayedLinks = document.querySelectorAll('.delayed-navigation-link');
-    delayedLinks.forEach(link => {
-        link.addEventListener('click', function (e) {
-            e.preventDefault();
-            const href = this.getAttribute('href');
-            // Only delay on mobile, instant on desktop
-            const delay = window.innerWidth < 768 ? 200 : 0;
-            setTimeout(() => {
-                window.location.href = href;
-            }, delay);
-        });
-    });
+
 
     // ---------------------------------------------------------
     // Timeline Items Staggered Animation
@@ -308,61 +297,50 @@ document.addEventListener('DOMContentLoaded', () => {
 // ---------------------------------------------------------
 // Pinned Cards Carousel Navigation (GlobalScope)
 // ---------------------------------------------------------
-// Initialize scroll feedback
+// Initialize scroll feedback & visibility
 document.addEventListener('DOMContentLoaded', () => {
     const container = document.getElementById('pinned-cards-container');
     const prevBtn = document.getElementById('pinned-prev-btn');
     const nextBtn = document.getElementById('pinned-next-btn');
 
     if (container && prevBtn && nextBtn) {
-        let lastScrollLeft = container.scrollLeft;
+
+        // Initial check for visibility on load
+        updateArrowVisibility();
+
+        // Click Handlers
+        prevBtn.addEventListener('click', () => {
+            container.scrollBy({ left: -container.clientWidth, behavior: 'smooth' });
+        });
+
+        nextBtn.addEventListener('click', () => {
+            container.scrollBy({ left: container.clientWidth, behavior: 'smooth' });
+        });
 
         container.addEventListener('scroll', () => {
-            const currentScrollLeft = container.scrollLeft;
-            const diff = Math.abs(currentScrollLeft - lastScrollLeft);
+            updateArrowVisibility();
+        });
 
-            // Only highlight if there is significant movement (swipe)
-            if (diff > 1) {
-                const direction = currentScrollLeft > lastScrollLeft ? 'right' : 'left';
-                const btn = direction === 'right' ? nextBtn : prevBtn;
+        function updateArrowVisibility() {
+            const scrollLeft = container.scrollLeft;
+            const maxScrollLeft = container.scrollWidth - container.clientWidth;
 
-                // Active State (Highlight)
-                btn.classList.remove('text-white/50');
-                btn.classList.add('text-white', 'scale-110'); // Added scale
+            // Tolerance to handle varying screen widths/rounding
+            const tolerance = 5;
 
-                // Clear previous timeout to keep lit while scrolling
-                if (btn.dataset.timeoutId) clearTimeout(parseInt(btn.dataset.timeoutId));
-
-                // Reset after scroll stops
-                const id = setTimeout(() => {
-                    btn.classList.add('text-white/50');
-                    btn.classList.remove('text-white', 'scale-110');
-                }, 200);
-
-                btn.dataset.timeoutId = id.toString();
+            // Prev Button Visibility
+            if (scrollLeft <= tolerance) {
+                prevBtn.classList.add('opacity-0');
+            } else {
+                prevBtn.classList.remove('opacity-0');
             }
 
-            lastScrollLeft = currentScrollLeft;
-        });
-    }
-});
-
-function scrollPinnedCards(direction) {
-    const container = document.getElementById('pinned-cards-container');
-    if (container) {
-        const scrollAmount = container.clientWidth; // Scroll by one screen width
-        const currentScroll = container.scrollLeft;
-
-        if (direction === 'left') {
-            container.scrollTo({
-                left: currentScroll - scrollAmount,
-                behavior: 'smooth'
-            });
-        } else if (direction === 'right') {
-            container.scrollTo({
-                left: currentScroll + scrollAmount,
-                behavior: 'smooth'
-            });
+            // Next Button Visibility
+            if (scrollLeft >= maxScrollLeft - tolerance) {
+                nextBtn.classList.add('opacity-0');
+            } else {
+                nextBtn.classList.remove('opacity-0');
+            }
         }
     }
-}
+});

@@ -24,6 +24,7 @@
     <meta property="og:image" content="https://zunxo7.github.io/AlHadiInitiative/assets/Icon.webp" />
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
@@ -159,78 +160,84 @@
     <section class="py-16 bg-background-light dark:bg-background-dark relative z-10 scroll-mt-24" id="content-grid">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="relative">
-                <!-- Navigation Buttons (Mobile Only) -->
-                <button id="pinned-prev-btn" onclick="scrollPinnedCards('left')"
-                    class="absolute left-2 top-1/2 -translate-y-1/2 z-20 md:hidden text-white/50 hover:text-white transition-colors focus:outline-none drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
+                <!-- Navigation Indicators (Mobile Only) -->
+                <div id="pinned-prev-btn"
+                    class="absolute left-2 top-1/2 -translate-y-1/2 z-20 md:hidden text-white transition-opacity duration-300 cursor-pointer drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] opacity-0">
                     <span class="material-icons text-5xl">chevron_left</span>
-                </button>
-                <button id="pinned-next-btn" onclick="scrollPinnedCards('right')"
-                    class="absolute right-2 top-1/2 -translate-y-1/2 z-20 md:hidden text-white/50 hover:text-white transition-colors focus:outline-none drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
+                </div>
+                <div id="pinned-next-btn"
+                    class="absolute right-2 top-1/2 -translate-y-1/2 z-20 md:hidden text-white transition-opacity duration-300 cursor-pointer drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
                     <span class="material-icons text-5xl">chevron_right</span>
-                </button>
+                </div>
 
                 <div id="pinned-cards-container"
-                    class="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-3 md:gap-6 gap-0 gsap-fade-up scrollbar-hide scroll-smooth py-4">
-                    <a class="delayed-navigation-link group relative min-h-[60vh] md:h-[500px] min-w-full w-full md:min-w-0 md:w-auto flex-shrink-0 snap-center bg-primary overflow-hidden rounded-lg"
+                    class="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-3 md:gap-6 gap-4 gsap-fade-up scrollbar-hide scroll-smooth py-4">
+                    <a class="delayed-navigation-link group relative min-h-[60vh] md:h-[500px] min-w-full w-full md:min-w-0 md:w-auto flex-shrink-0 snap-center snap-always bg-primary overflow-hidden rounded-lg"
                         href="#about">
                         <div class="noise-overlay opacity-40"></div>
                         <div
-                            class="absolute inset-0 bg-black/0 group-hover:bg-black/20 group-active:bg-black/20 transition-all duration-500">
+                            class="absolute inset-0 bg-black/20 md:bg-black/0 md:group-hover:bg-black/20 md:group-active:bg-black/20 transition-all duration-500">
                         </div>
                         <div class="absolute top-4 right-4 text-white/70">
-                            <span class="material-icons text-sm transform rotate-45">push_pin</span>
+                            <i class="ph ph-hand-pointing text-2xl"></i>
                         </div>
                         <div class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
                             <h2
-                                class="font-cinzel text-4xl md:text-5xl text-white mb-2 transform group-hover:scale-110 group-active:scale-110 transition-transform duration-500">
+                                class="font-cinzel text-4xl md:text-5xl text-white mb-2 transform scale-110 md:scale-100 md:group-hover:scale-110 md:group-active:scale-110 transition-transform duration-500">
                                 ABOUT US</h2>
                             <div
-                                class="w-16 h-0.5 bg-white/40 mt-2 opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500">
+                                class="w-16 h-0.5 bg-white/40 mt-2 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:group-active:opacity-100 transition-opacity duration-500">
                             </div>
                             <span
-                                class="material-icons text-white/20 text-6xl mt-4 opacity-0 group-hover:opacity-100 group-active:opacity-100 group-hover:-translate-y-2 group-active:-translate-y-2 transition-all duration-500">groups</span>
+                                class="material-icons text-white/20 text-6xl mt-4 opacity-100 -translate-y-2 md:opacity-0 md:translate-y-0 md:group-hover:opacity-100 md:group-active:opacity-100 md:group-hover:-translate-y-2 md:group-active:-translate-y-2 transition-all duration-500">groups</span>
                         </div>
                         <div class="absolute bottom-10 left-10 right-10 h-[1px] bg-white/20"></div>
                     </a>
-                    <a class="delayed-navigation-link group relative min-h-[60vh] md:h-[500px] min-w-full w-full md:min-w-0 md:w-auto flex-shrink-0 snap-center bg-primary overflow-hidden rounded-lg"
+                    <a class="delayed-navigation-link group relative min-h-[60vh] md:h-[500px] min-w-full w-full md:min-w-0 md:w-auto flex-shrink-0 snap-center snap-always bg-primary overflow-hidden rounded-lg"
                         href="#mission">
                         <div class="noise-overlay opacity-40"></div>
                         <div
-                            class="absolute inset-0 bg-black/0 group-hover:bg-black/20 group-active:bg-black/20 transition-all duration-500">
+                            class="absolute inset-0 bg-black/20 md:bg-black/0 md:group-hover:bg-black/20 md:group-active:bg-black/20 transition-all duration-500">
                         </div>
                         <div class="absolute top-4 right-4 text-white/70">
-                            <span class="material-icons text-sm transform rotate-45">push_pin</span>
+                            <i class="ph ph-hand-pointing text-2xl"></i>
                         </div>
                         <div class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
                             <div class="flex items-center gap-2 mb-2">
                                 <!-- Helper Dots Removed -->
                                 <h2
-                                    class="font-cinzel text-4xl md:text-5xl text-white transform group-hover:scale-110 group-active:scale-110 transition-transform duration-500">
+                                    class="font-cinzel text-4xl md:text-5xl text-white transform scale-110 md:scale-100 md:group-hover:scale-110 md:group-active:scale-110 transition-transform duration-500">
                                     OUR MISSION</h2>
                                 <!-- Helper Dots Removed -->
                             </div>
+                            <div
+                                class="w-16 h-0.5 bg-white/40 mt-2 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:group-active:opacity-100 transition-opacity duration-500">
+                            </div>
                             <span
-                                class="material-icons text-white/20 text-6xl mt-4 opacity-0 group-hover:opacity-100 group-active:opacity-100 group-hover:-translate-y-2 group-active:-translate-y-2 transition-all duration-500">visibility</span>
+                                class="material-icons text-white/20 text-6xl mt-4 opacity-100 -translate-y-2 md:opacity-0 md:translate-y-0 md:group-hover:opacity-100 md:group-active:opacity-100 md:group-hover:-translate-y-2 md:group-active:-translate-y-2 transition-all duration-500">visibility</span>
                         </div>
                         <div class="absolute bottom-10 left-10 right-10 h-[1px] bg-white/20"></div>
                     </a>
-                    <a class="delayed-navigation-link group relative min-h-[60vh] md:h-[500px] min-w-full w-full md:min-w-0 md:w-auto flex-shrink-0 snap-center bg-primary overflow-hidden rounded-lg"
+                    <a class="delayed-navigation-link group relative min-h-[60vh] md:h-[500px] min-w-full w-full md:min-w-0 md:w-auto flex-shrink-0 snap-center snap-always bg-primary overflow-hidden rounded-lg"
                         href="#locations">
                         <div class="noise-overlay opacity-40"></div>
                         <div
-                            class="absolute inset-0 bg-black/0 group-hover:bg-black/20 group-active:bg-black/20 transition-all duration-500">
+                            class="absolute inset-0 bg-black/20 md:bg-black/0 md:group-hover:bg-black/20 md:group-active:bg-black/20 transition-all duration-500">
                         </div>
                         <div class="absolute top-4 right-4 text-white/70">
-                            <span class="material-icons text-sm transform rotate-45">push_pin</span>
+                            <i class="ph ph-hand-pointing text-2xl"></i>
                         </div>
                         <div class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
                             <h2
-                                class="font-cinzel text-4xl md:text-5xl text-white mb-2 leading-tight transform group-hover:scale-110 group-active:scale-110 transition-transform duration-500">
+                                class="font-cinzel text-4xl md:text-5xl text-white mb-2 leading-tight transform scale-110 md:scale-100 md:group-hover:scale-110 md:group-active:scale-110 transition-transform duration-500">
                                 WHERE WE<br />BEGIN</h2>
+                            <div
+                                class="w-16 h-0.5 bg-white/40 mt-2 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:group-active:opacity-100 transition-opacity duration-500">
+                            </div>
                             <span
-                                class="material-icons text-white/20 text-6xl mt-4 opacity-0 group-hover:opacity-100 group-active:opacity-100 group-hover:-translate-y-2 group-active:-translate-y-2 transition-all duration-500">place</span>
+                                class="material-icons text-white/20 text-6xl mt-4 opacity-100 -translate-y-2 md:opacity-0 md:translate-y-0 md:group-hover:opacity-100 md:group-active:opacity-100 md:group-hover:-translate-y-2 md:group-active:-translate-y-2 transition-all duration-500">place</span>
                         </div>
-                        <div class="absolute top-10 left-10 right-10 h-[1px] bg-white/20"></div>
+                        <div class="absolute bottom-10 left-10 right-10 h-[1px] bg-white/20"></div>
                     </a>
                 </div>
             </div>
