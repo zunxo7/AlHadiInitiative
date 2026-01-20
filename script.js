@@ -253,19 +253,19 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .fromTo(mobileMenuOverlay,
             { opacity: 0, backgroundColor: "rgba(255, 255, 255, 0)" },
-            { opacity: 1, backgroundColor: "rgba(255, 255, 255, 1)", duration: 0.4, ease: "power2.out" }
+            { opacity: 1, backgroundColor: "rgba(255, 255, 255, 1)", duration: 0.26, ease: "power2.out" }
         )
         .fromTo(closeMenuButton,
             { rotation: -90, opacity: 0, scale: 0.5 },
-            { rotation: 0, opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.7)" },
+            { rotation: 0, opacity: 1, scale: 1, duration: 0.2, ease: "back.out(1.7)" },
             "-=0.2"
         )
         .from(mobileMenuLinks, {
-            y: 30, opacity: 0, stagger: 0.1, duration: 0.5, ease: "power3.out"
+            y: 30, opacity: 0, stagger: 0.1, duration: 0.33, ease: "power3.out"
         }, "-=0.2")
         .fromTo(mobileMenuSeparators,
             { scaleX: 0, opacity: 0 },
-            { scaleX: 1, opacity: 1, duration: 0.4, stagger: 0.1, ease: "power2.out" },
+            { scaleX: 1, opacity: 1, duration: 0.26, stagger: 0.1, ease: "power2.out" },
             "<"
         );
 
