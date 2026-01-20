@@ -1,0 +1,94 @@
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+* {
+    -webkit-user-select: none; /* Chrome, Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Edge (old) */
+    user-select: none; /* Standard */
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.text-shadow {
+    text-shadow: 0 4px 6px rgba(0, 0, 0, 0.4)
+}
+
+.noise-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuAGx-GtPT-oUYFTMZieTvrnCSWjmQYFVKtDwRnogeNNfRWrl-SbZ7c8rp5D6o71h1jFDqz61zYpVc0EzsSIlY_feZbSwznB5tVU635HeFu5JpteIS5mGx7Qho0vDVB2y43opkBpEK0sIFcqE22s8ndZb5-QS9IVLdLI4fFRxM2wUZF-UYL52137Zn3SUkVxLAkgKgTP5ACT-kZcNx6VFHvwP-QM3rSXGC9hMEYCnWM-P4lTmg11HPGyzYvosdMuKni4woKg3FYg_p8Y);
+    opacity: 0.5;
+    mix-blend-mode: overlay
+}
+
+.chevron-up {
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%)
+}
+
+/* Hide Scrollbar */
+::-webkit-scrollbar {
+    display: none;
+}
+
+html {
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.loading-pattern {
+    background-color: #7f1d1d;
+    background-image:
+        /* Grid lines only */
+        linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    background-size: 60px 60px;
+}
+
+/* Hero section gradient overlay - desktop */
+.hero-gradient-overlay {
+    background:
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, transparent 30%, transparent 70%, #7f1d1d 100%),
+        repeating-linear-gradient(
+            90deg,
+            transparent 0px,
+            transparent 80px,
+            rgba(255, 255, 255, 0.02) 80px,
+            rgba(255, 255, 255, 0.02) 82px
+        ),
+        repeating-linear-gradient(
+            0deg,
+            transparent 0px,
+            transparent 80px,
+            rgba(255, 255, 255, 0.02) 80px,
+            rgba(255, 255, 255, 0.02) 82px
+        );
+}
+
+/* Remove shadows from mission cards on mobile */
+@media (max-width: 768px) {
+    #mission .overflow-x-auto > div {
+        box-shadow: none !important;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+}
+
+/* Hero section gradient overlay - mobile optimized */
+@media (max-width: 768px) {
+    .hero-gradient-overlay {
+        background:
+            linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, transparent 30%, transparent 70%, #7f1d1d 100%),
+            linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+        background-size: 100% 100%, 50px 50px, 50px 50px;
+    }
+}

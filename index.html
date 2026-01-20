@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Al Hadi Initiative</title>
+    <meta content="Al Hadi Initiative is a non-profit organization committed to serving humanity with compassion, guidance, and integrity. Supporting the underprivileged and driving positive change within communities." name="description" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Cinzel:wght@400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet" />
+    <link rel="icon" href="assets/Icon.webp" type="image/webp">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#7f1d1d", // Deep Red (matches screenshot)
+                        secondary: "#991b1b",
+                        "background-light": "#FAFAFA",
+                        "background-dark": "#0a0a0a",
+                        "surface-dark": "#171717",
+                    },
+                    fontFamily: {
+                        cinzel: ["'Cinzel'", "serif"],
+                        bebas: ["'Bebas Neue'", "sans-serif"],
+                        sans: ["'Inter'", "sans-serif"],
+                    },
+                },
+            },
+        };
+    </script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-gray-900 dark:text-gray-100 font-sans antialiased selection:bg-primary selection:text-white">
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="fixed inset-0 z-[100] loading-pattern flex flex-col items-center justify-center overflow-hidden">
+        <!-- Title -->
+        <h2 class="font-cinzel text-3xl md:text-5xl text-white tracking-widest mb-6 loading-text text-center">AL
+            HADI<br>INITIATIVE</h2>
+
+        <!-- Tracker Track (Container) -->
+        <div class="relative w-[85vw] max-w-lg md:max-w-xl h-1 bg-white/20 rounded-full mb-6 overflow-visible">
+            <!-- Progress Fill -->
+            <div id="loading-progress" class="absolute inset-y-0 left-0 bg-white rounded-full" style="width: 0%"></div>
+            <!-- Moving Logo -->
+            <div id="loading-tracker" class="absolute top-1/2 -translate-y-1/2 w-12 h-12 md:w-14 md:h-14" style="left: -24px;">
+                <img src="assets/Loading.webp" alt="Loading..." class="w-full h-full object-contain drop-shadow-lg">
+            </div>
+        </div>
+
+        <!-- Captions -->
+        <p id="loading-caption" class="font-bebas text-xl text-white/80 tracking-widest min-h-[1.75rem]">Helping
+            People...</p>
+    </div>
+    <nav class="fixed w-full z-50 top-0 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer group">
+                    <img src="assets/Logo.webp" alt="Al Hadi Logo" class="w-10 h-10 object-contain drop-shadow-sm">
+                    <span class="font-cinzel font-bold text-lg tracking-widest text-white drop-shadow-sm">AL
+                        HADI</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a class="font-bebas text-xl tracking-wider text-white hover:text-red-200 transition-colors opacity-90 hover:opacity-100"
+                            href="#">Home</a>
+                        <a class="font-bebas text-xl tracking-wider text-white hover:text-red-200 transition-colors opacity-90 hover:opacity-100"
+                            href="#about">About</a>
+                        <a class="font-bebas text-xl tracking-wider text-white hover:text-red-200 transition-colors opacity-90 hover:opacity-100"
+                            href="#mission">Mission</a>
+                        <a class="font-bebas text-xl tracking-wider text-white hover:text-red-200 transition-colors opacity-90 hover:opacity-100"
+                            href="#donate">Contact</a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button id="mobile-menu-button"
+                        class="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-red-200 focus:outline-none"
+                        type="button">
+                        <span class="material-icons">menu</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <header class="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden bg-primary">
+        <div class="noise-overlay"></div>
+        <!-- Geometric gradient overlay - optimized for mobile -->
+        <div class="absolute inset-0 pointer-events-none hero-gradient-overlay"></div>
+        <div class="relative z-10 flex flex-col items-center px-4 animate-fade-in-up">
+            <div class="mb-8 w-24 h-24 md:w-48 md:h-48 flex items-center justify-center hero-animate opacity-0">
+                <img src="assets/Logo.webp" alt="Al Hadi Initiative" class="w-full h-full object-contain">
+            </div>
+            <h1
+                class="font-cinzel font-bold text-5xl md:text-8xl lg:text-9xl text-white tracking-widest text-shadow text-center leading-none hero-animate opacity-0">
+                AL HADI
+            </h1>
+            <p
+                class="font-bebas text-2xl md:text-5xl text-red-50 tracking-[0.2em] mt-2 text-shadow text-center hero-animate opacity-0">
+                INITIATIVE
+            </p>
+
+            <!-- Hero Stats -->
+            <div
+                class="mt-8 md:mt-12 flex flex-row flex-wrap justify-center items-center gap-4 md:gap-16 text-center hero-animate opacity-0">
+                <div class="flex flex-col items-center">
+                    <span class="font-cinzel text-3xl md:text-5xl font-black text-white drop-shadow-lg">5</span>
+                    <span class="font-bebas tracking-wider text-red-100/90 text-sm md:text-lg">Regions</span>
+                </div>
+                <!-- Divider -->
+                <div class="w-0.5 h-10 md:h-14 bg-white/60"></div>
+
+                <div class="flex flex-col items-center">
+                    <span class="font-cinzel text-3xl md:text-5xl font-black text-white drop-shadow-lg">3</span>
+                    <span class="font-bebas tracking-wider text-red-100/90 text-sm md:text-lg">Countries</span>
+                </div>
+                <!-- Divider -->
+                <div class="w-0.5 h-10 md:h-14 bg-white/60"></div>
+
+                <div class="flex flex-col items-center">
+                    <span class="font-cinzel text-3xl md:text-5xl font-black text-white drop-shadow-lg">1</span>
+                    <span class="font-bebas tracking-wider text-red-100/90 text-sm md:text-lg">Mission</span>
+                </div>
+            </div>
+
+            <!-- Donate Button -->
+            <a href="#donate" class="mt-10 px-10 py-3 bg-white text-primary font-bebas text-xl tracking-widest hover:bg-red-50 transition-colors rounded-sm shadow-lg hero-animate opacity-0">
+                DONATE NOW
+            </a>
+        </div>
+        <div class="absolute bottom-4 animate-bounce z-20 hero-animate opacity-0">
+            <span class="material-icons text-4xl text-white opacity-80">keyboard_arrow_down</span>
+        </div>
+    </header>
+    <section class="py-16 bg-background-light dark:bg-background-dark relative z-10 scroll-mt-24" id="content-grid">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div
+                class="grid grid-cols-1 md:grid-cols-3 gap-0 shadow-2xl rounded-lg overflow-hidden border border-gray-200 dark:border-gray-800 gsap-fade-up">
+                <a class="delayed-navigation-link group relative h-80 md:h-[500px] bg-primary overflow-hidden border-b md:border-b-0 md:border-r border-red-900/30"
+                    href="#about">
+                    <div class="noise-overlay opacity-40"></div>
+                    <div
+                        class="absolute inset-0 bg-black/0 group-hover:bg-black/20 group-active:bg-black/20 transition-all duration-500">
+                    </div>
+                    <div class="absolute top-4 right-4 text-white/70">
+                        <span class="material-icons text-sm transform rotate-45">push_pin</span>
+                    </div>
+                    <div class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
+                        <h2
+                            class="font-cinzel text-4xl md:text-5xl text-white mb-2 transform group-hover:scale-110 group-active:scale-110 transition-transform duration-500">
+                            ABOUT US</h2>
+                        <div
+                            class="w-16 h-0.5 bg-white/40 mt-2 opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500">
+                        </div>
+                        <span
+                            class="material-icons text-white/20 text-6xl mt-4 opacity-0 group-hover:opacity-100 group-active:opacity-100 group-hover:-translate-y-2 group-active:-translate-y-2 transition-all duration-500">groups</span>
+                    </div>
+                    <div class="absolute bottom-10 left-10 right-10 h-[1px] bg-white/20"></div>
+                </a>
+                <a class="delayed-navigation-link group relative h-80 md:h-[500px] bg-primary overflow-hidden border-b md:border-b-0 md:border-r border-red-900/30"
+                    href="#mission">
+                    <div class="noise-overlay opacity-40"></div>
+                    <div
+                        class="absolute inset-0 bg-black/0 group-hover:bg-black/20 group-active:bg-black/20 transition-all duration-500">
+                    </div>
+                    <div class="absolute top-4 right-4 text-white/70">
+                        <span class="material-icons text-sm transform rotate-45">push_pin</span>
+                    </div>
+                    <div class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
+                        <div class="flex items-center gap-2 mb-2">
+                            <!-- Helper Dots Removed -->
+                            <h2
+                                class="font-cinzel text-4xl md:text-5xl text-white transform group-hover:scale-110 group-active:scale-110 transition-transform duration-500">
+                                OUR MISSION</h2>
+                            <!-- Helper Dots Removed -->
+                        </div>
+                        <span
+                            class="material-icons text-white/20 text-6xl mt-4 opacity-0 group-hover:opacity-100 group-active:opacity-100 group-hover:-translate-y-2 group-active:-translate-y-2 transition-all duration-500">visibility</span>
+                    </div>
+                    <div class="absolute bottom-10 left-10 right-10 h-[1px] bg-white/20"></div>
+                </a>
+                <a class="delayed-navigation-link group relative h-80 md:h-[500px] bg-primary overflow-hidden"
+                    href="#locations">
+                    <div class="noise-overlay opacity-40"></div>
+                    <div
+                        class="absolute inset-0 bg-black/0 group-hover:bg-black/20 group-active:bg-black/20 transition-all duration-500">
+                    </div>
+                    <div class="absolute top-4 right-4 text-white/70">
+                        <span class="material-icons text-sm transform rotate-45">push_pin</span>
+                    </div>
+                    <div class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
+                        <h2
+                            class="font-cinzel text-4xl md:text-5xl text-white mb-2 leading-tight transform group-hover:scale-110 group-active:scale-110 transition-transform duration-500">
+                            WHERE WE<br />BEGIN</h2>
+                        <span
+                            class="material-icons text-white/20 text-6xl mt-4 opacity-0 group-hover:opacity-100 group-active:opacity-100 group-hover:-translate-y-2 group-active:-translate-y-2 transition-all duration-500">place</span>
+                    </div>
+                    <div class="absolute top-10 left-10 right-10 h-[1px] bg-white/20"></div>
+                </a>
+            </div>
+        </div>
+    </section>
+    <section class="py-24 bg-white dark:bg-surface-dark transition-colors duration-300 scroll-mt-24" id="about">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="w-full md:w-1/2 relative group gsap-fade-up">
+                    <div
+                        class="absolute top-[-10px] left-[-10px] w-full h-full border-2 border-primary dark:border-red-800 z-0">
+                    </div>
+                    <div
+                        class="relative z-10 overflow-hidden h-96 w-full grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out bg-gray-200 dark:bg-gray-800">
+                        <img alt="Team meeting" class="w-full h-full object-cover"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3D1gGKortMTPX3kFWvClWXe_HFWl5m19K9I4xh-2D6Wugk_bw0llDhMjX-Wj3O6dylv3nEyLKX4zhHtRlaOzSYsJUT1bH0NK8i0Y-WeFsQwcWpPZMWV8dNAa8-zHq5O1MlSuqC1_k4KSUAcvG1s51eUaVMb_4MaFTgpOgVrVPllaxQiCM6B0-h5y5TRqHyfWAPtvUjf8Wl3LeqIeqx1mCzjRRLseVI3B4IsBFwdVwlp_O3iJcDhRuhgCmBoAiDf1ESBIq1KWZ_4aX" />
+                        <div class="absolute inset-0 bg-primary/20 mix-blend-multiply"></div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 gsap-fade-up">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="h-px w-12 bg-primary dark:bg-red-500"></div>
+                        <span class="font-bebas text-xl text-primary dark:text-red-500 tracking-wider">About Us</span>
+                    </div>
+                    <h2 class="font-cinzel text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">Serving
+                        Humanity With Compassion</h2>
+                    <p class="text-gray-600 dark:text-gray-300 font-sans leading-relaxed mb-6 text-lg">
+                        Al Hadi Initiative is a non-profit organization committed to serving humanity with compassion, guidance, and integrity. Inspired by the meaning of Al-Hadi—The Guide—we aim to support the underprivileged, raise awareness, and bring positive change within communities.
+                    </p>
+                    <div class="motive-animate">
+                        <h3 class="font-bebas text-gray-900 dark:text-white tracking-widest text-xl mb-3 motive-label">Our Motive</h3>
+                        <div class="bg-gradient-to-r from-primary/5 to-red-50 dark:from-red-900/20 dark:to-red-800/10 border-l-4 border-primary dark:border-red-500 p-5 rounded-r-lg motive-quote">
+                            <p class="text-gray-800 dark:text-gray-200 font-cinzel text-xl md:text-2xl leading-relaxed">
+                                "To turn strong values into meaningful action, creating impact with dignity and unity."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-24 bg-primary relative overflow-hidden scroll-mt-24" id="mission">
+        <div class="noise-overlay opacity-30"></div>
+        <div
+            class="absolute -right-20 -top-20 w-96 h-96 bg-red-900 rounded-full blur-3xl opacity-50 mix-blend-multiply">
+        </div>
+        <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
+            <h2 class="font-cinzel text-4xl md:text-6xl text-white mb-8 gsap-fade-up">OUR MISSION</h2>
+            <div class="w-24 h-1 bg-white mx-auto mb-10 gsap-fade-up"></div>
+            <p class="font-cinzel text-xl md:text-2xl text-red-50 leading-loose gsap-fade-up">
+                "Our mission is to serve humanity through purposeful action, compassion, and responsibility. We aim to support those in need, spread awareness, and drive positive change while building strong, united communities."
+            </p>
+            <div
+                class="flex flex-row md:grid md:grid-cols-3 overflow-x-auto md:overflow-visible gap-4 md:gap-8 mt-16 pb-6 md:pb-0 px-4 md:px-0 gsap-fade-up mission-carousel">
+                <div
+                    class="min-w-[280px] md:min-w-0 p-6 border border-white/40 bg-red-900/40 backdrop-blur-sm rounded-lg hover:bg-white/10 transition-colors cursor-default flex flex-col items-center">
+                    <span class="material-icons text-4xl text-white mb-4">volunteer_activism</span>
+                    <h3 class="font-bebas text-2xl text-white mb-2">Support</h3>
+                    <p class="font-sans text-red-100/80 text-sm">Helping the underprivileged with compassion.</p>
+                </div>
+                <!-- Card 2 -->
+                <div
+                    class="min-w-[280px] md:min-w-0 p-6 border border-white/40 bg-red-900/40 backdrop-blur-sm rounded-lg hover:bg-white/10 transition-colors cursor-default flex flex-col items-center">
+                    <span class="material-icons text-4xl text-white mb-4">campaign</span>
+                    <h3 class="font-bebas text-2xl text-white mb-2">Awareness</h3>
+                    <p class="font-sans text-red-100/80 text-sm">Spreading knowledge and raising voices.</p>
+                </div>
+                <!-- Card 3 -->
+                <div
+                    class="min-w-[280px] md:min-w-0 p-6 border border-white/40 bg-red-900/40 backdrop-blur-sm rounded-lg hover:bg-white/10 transition-colors cursor-default flex flex-col items-center">
+                    <span class="material-icons text-4xl text-white mb-4">diversity_3</span>
+                    <h3 class="font-bebas text-2xl text-white mb-2">Community</h3>
+                    <p class="font-sans text-red-100/80 text-sm">Building strong, united communities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Where We Begin Section -->
+    <section class="py-24 bg-white dark:bg-surface-dark scroll-mt-24 overflow-hidden" id="locations">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 gsap-fade-up">
+                <div class="flex items-center justify-center gap-4 mb-4">
+                    <div class="h-px w-12 bg-primary dark:bg-red-500"></div>
+                    <span class="font-bebas text-xl text-primary dark:text-red-500 tracking-wider">Our Reach</span>
+                    <div class="h-px w-12 bg-primary dark:bg-red-500"></div>
+                </div>
+                <h2 class="font-cinzel text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">WHERE WE BEGIN</h2>
+                <div class="w-24 h-1 bg-primary dark:bg-red-500 mx-auto mb-8"></div>
+                <p class="text-gray-600 dark:text-gray-300 font-sans leading-relaxed max-w-3xl mx-auto text-lg">
+                    Starting in these key regions allows us to build strong community roots and create meaningful impact from the ground up.
+                </p>
+            </div>
+
+            <!-- Timeline Style Layout -->
+            <div class="relative">
+                <!-- Vertical Line -->
+                <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-green-600 via-primary to-primary transform md:-translate-x-1/2"></div>
+
+                <!-- Pakistan Section -->
+                <div class="relative flex flex-col md:flex-row items-start md:items-center mb-16">
+                    <!-- Timeline Dot -->
+                    <div class="absolute left-4 md:left-1/2 w-4 h-4 bg-green-600 rounded-full transform -translate-x-1/2 border-4 border-white dark:border-surface-dark shadow-lg z-10"></div>
+
+                    <!-- Content - Left side on desktop -->
+                    <div class="md:w-1/2 md:pr-16 md:text-right pl-12 md:pl-0">
+                        <div class="inline-flex items-center gap-2 mb-3 md:flex-row-reverse">
+                            <span class="font-cinzel text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">Pakistan</span>
+                            <span class="text-3xl">🇵🇰</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2 md:justify-end">
+                            <span class="bg-green-600 text-white font-bebas tracking-wider px-4 py-1.5 text-sm border-l-4 border-green-400">ISLAMABAD</span>
+                            <span class="bg-green-600 text-white font-bebas tracking-wider px-4 py-1.5 text-sm border-l-4 border-green-400">PESHAWAR</span>
+                            <span class="bg-green-600 text-white font-bebas tracking-wider px-4 py-1.5 text-sm border-l-4 border-green-400">KARACHI</span>
+                        </div>
+                    </div>
+
+                    <!-- Empty right side on desktop -->
+                    <div class="hidden md:block md:w-1/2"></div>
+                </div>
+
+                <!-- Iraq Section -->
+                <div class="relative flex flex-col md:flex-row items-start md:items-center mb-16">
+                    <!-- Timeline Dot -->
+                    <div class="absolute left-4 md:left-1/2 w-4 h-4 bg-primary rounded-full transform -translate-x-1/2 border-4 border-white dark:border-surface-dark shadow-lg z-10"></div>
+
+                    <!-- Empty left side on desktop -->
+                    <div class="hidden md:block md:w-1/2"></div>
+
+                    <!-- Content - Right side on desktop -->
+                    <div class="md:w-1/2 md:pl-16 pl-12">
+                        <div class="inline-flex items-center gap-2 mb-3">
+                            <span class="text-3xl">🇮🇶</span>
+                            <span class="font-cinzel text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">Iraq</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-primary text-white font-bebas tracking-wider px-4 py-1.5 text-sm border-l-4 border-red-400">KURDISTAN</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jordan Section -->
+                <div class="relative flex flex-col md:flex-row items-start md:items-center">
+                    <!-- Timeline Dot -->
+                    <div class="absolute left-4 md:left-1/2 w-4 h-4 bg-primary rounded-full transform -translate-x-1/2 border-4 border-white dark:border-surface-dark shadow-lg z-10"></div>
+
+                    <!-- Content - Left side on desktop -->
+                    <div class="md:w-1/2 md:pr-16 md:text-right pl-12 md:pl-0">
+                        <div class="inline-flex items-center gap-2 mb-3 md:flex-row-reverse">
+                            <span class="font-cinzel text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">Jordan</span>
+                            <span class="text-3xl">🇯🇴</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2 md:justify-end">
+                            <span class="bg-primary text-white font-bebas tracking-wider px-4 py-1.5 text-sm border-l-4 border-red-400">AMMAN</span>
+                        </div>
+                    </div>
+
+                    <!-- Empty right side on desktop -->
+                    <div class="hidden md:block md:w-1/2"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-24 bg-background-light dark:bg-background-dark scroll-mt-24" id="donate">
+        <div class="max-w-4xl mx-auto px-4 gsap-fade-up">
+            <div class="text-center mb-12">
+                <div class="flex items-center justify-center gap-4 mb-4">
+                    <div class="h-px w-12 bg-primary dark:bg-red-500"></div>
+                    <span class="font-bebas text-xl text-primary dark:text-red-500 tracking-wider">Support Us</span>
+                    <div class="h-px w-12 bg-primary dark:bg-red-500"></div>
+                </div>
+                <h2 class="font-cinzel text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">DONATE NOW</h2>
+                <div class="w-24 h-1 bg-primary dark:bg-red-500 mx-auto mb-8"></div>
+                <p class="text-gray-600 dark:text-gray-300 font-sans leading-relaxed max-w-3xl mx-auto text-lg">
+                    Your contribution helps us continue our mission. Every donation makes a difference.
+                </p>
+            </div>
+
+            <div class="bg-gradient-to-br from-primary to-red-900 rounded-2xl p-8 md:p-12 text-center relative overflow-hidden">
+                <div class="absolute inset-0 opacity-10">
+                    <div class="absolute inset-0" style="background-image: linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 40px 40px;"></div>
+                </div>
+                <div class="relative z-10">
+                    <div class="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full mb-6">
+                        <span class="material-icons text-white text-sm">verified</span>
+                        <span class="font-bebas text-white tracking-wider text-sm">EASYPAISA</span>
+                    </div>
+                    <p id="easypaisa-number" class="font-cinzel text-4xl md:text-6xl text-white font-bold tracking-wider mb-6">0312 3456789</p>
+                    <button onclick="copyNumber()" id="copy-btn" class="inline-flex items-center gap-2 bg-white text-primary font-bebas tracking-widest px-8 py-3 hover:bg-red-50 transition-colors rounded-full shadow-lg">
+                        <span class="material-icons text-lg">content_copy</span>
+                        COPY NUMBER
+                    </button>
+                    <p id="copy-feedback" class="text-white/80 font-sans text-sm mt-4 h-5 transition-opacity" style="opacity: 0;">Copied to clipboard!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        function copyNumber() {
+            const number = '03123456789';
+            navigator.clipboard.writeText(number).then(() => {
+                const feedback = document.getElementById('copy-feedback');
+                feedback.style.opacity = '1';
+                setTimeout(() => { feedback.style.opacity = '0'; }, 2000);
+            });
+        }
+    </script>
+    <footer class="bg-surface-dark border-t border-gray-800 py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-row justify-between items-center">
+            <div class="flex flex-col items-start">
+                <div class="flex items-center gap-3 mb-1">
+                    <img src="assets/Logo.webp" alt="Logo" class="w-8 h-8 object-contain">
+                    <span class="font-cinzel font-bold text-gray-400 tracking-widest text-sm md:text-base">AL HADI INITIATIVE</span>
+                </div>
+                <p class="text-gray-500 text-xs md:text-sm">&copy; 2025 Al Hadi Initiative. All rights reserved.</p>
+            </div>
+            <a class="text-gray-500 hover:text-white transition-colors" href="https://www.instagram.com/alhadinitiative/" target="_blank" rel="noopener noreferrer">
+                <span class="sr-only">Instagram</span>
+                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path clip-rule="evenodd"
+                        d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.468 2.53c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                        fill-rule="evenodd"></path>
+                </svg>
+            </a>
+        </div>
+    </footer>
+
+    <!-- Full Screen Mobile Menu Overlay -->
+    <div id="mobile-menu-overlay"
+        class="hidden fixed inset-0 z-[60] bg-white flex flex-col justify-center items-center opacity-0 invisible">
+        <button id="close-menu-button"
+            class="absolute top-6 right-6 text-primary hover:text-red-800 transition-colors focus:outline-none opacity-0">
+            <span class="material-icons text-5xl">close</span>
+        </button>
+        <div class="flex flex-col items-center space-y-4">
+            <a class="mobile-menu-link font-cinzel text-3xl text-gray-900 hover:text-primary transition-colors"
+                href="#">Home</a>
+            <div class="w-12 h-px bg-gray-200 mobile-menu-separator opacity-0"></div>
+            <a class="mobile-menu-link font-cinzel text-3xl text-gray-900 hover:text-primary transition-colors"
+                href="#about">About</a>
+            <div class="w-12 h-px bg-gray-200 mobile-menu-separator opacity-0"></div>
+            <a class="mobile-menu-link font-cinzel text-3xl text-gray-900 hover:text-primary transition-colors"
+                href="#mission">Mission</a>
+            <div class="w-12 h-px bg-gray-200 mobile-menu-separator opacity-0"></div>
+            <a class="mobile-menu-link font-cinzel text-3xl text-gray-900 hover:text-primary transition-colors"
+                href="#donate">Contact</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
