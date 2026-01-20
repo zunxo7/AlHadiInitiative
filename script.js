@@ -190,7 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Calculate single set width after cloning
         const singleSetWidth = missionCarousel.scrollWidth / 3;
 
-        let scrollSpeed = 0.5;
+        let scrollSpeed = 0.65;
         let isPaused = false;
 
         let lastTime = 0;
