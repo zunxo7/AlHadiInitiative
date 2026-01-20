@@ -4,10 +4,14 @@ html {
 }
 
 * {
-    -webkit-user-select: none; /* Chrome, Safari */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* Edge (old) */
-    user-select: none; /* Standard */
+    -webkit-user-select: none;
+    /* Chrome, Safari */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Edge (old) */
+    user-select: none;
+    /* Standard */
 }
 
 body {
@@ -46,7 +50,7 @@ html {
 }
 
 .loading-pattern {
-    background-color: #7f1d1d;
+    /* Background color handled by utility class (bg-primary) */
     background-image:
         /* Grid lines only */
         linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
@@ -58,25 +62,21 @@ html {
 .hero-gradient-overlay {
     background:
         linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, transparent 30%, transparent 70%, #7f1d1d 100%),
-        repeating-linear-gradient(
-            90deg,
+        repeating-linear-gradient(90deg,
             transparent 0px,
             transparent 80px,
             rgba(255, 255, 255, 0.02) 80px,
-            rgba(255, 255, 255, 0.02) 82px
-        ),
-        repeating-linear-gradient(
-            0deg,
+            rgba(255, 255, 255, 0.02) 82px),
+        repeating-linear-gradient(0deg,
             transparent 0px,
             transparent 80px,
             rgba(255, 255, 255, 0.02) 80px,
-            rgba(255, 255, 255, 0.02) 82px
-        );
+            rgba(255, 255, 255, 0.02) 82px);
 }
 
 /* Remove shadows from mission cards on mobile */
 @media (max-width: 768px) {
-    #mission .overflow-x-auto > div {
+    #mission .overflow-x-auto>div {
         box-shadow: none !important;
         border: 1px solid rgba(255, 255, 255, 0.2);
     }

@@ -304,3 +304,65 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+// ---------------------------------------------------------
+// Pinned Cards Carousel Navigation (GlobalScope)
+// ---------------------------------------------------------
+// Initialize scroll feedback
+document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('pinned-cards-container');
+    const prevBtn = document.getElementById('pinned-prev-btn');
+    const nextBtn = document.getElementById('pinned-next-btn');
+
+    if (container && prevBtn && nextBtn) {
+        let lastScrollLeft = container.scrollLeft;
+
+        container.addEventListener('scroll', () => {
+            const currentScrollLeft = container.scrollLeft;
+            const diff = Math.abs(currentScrollLeft - lastScrollLeft);
+
+            // Only highlight if there is significant movement (swipe)
+            if (diff > 1) {
+                const direction = currentScrollLeft > lastScrollLeft ? 'right' : 'left';
+                const btn = direction === 'right' ? nextBtn : prevBtn;
+
+                // Active State (Highlight)
+                btn.classList.remove('text-white/50');
+                btn.classList.add('text-white', 'scale-110'); // Added scale
+
+                // Clear previous timeout to keep lit while scrolling
+                if (btn.dataset.timeoutId) clearTimeout(parseInt(btn.dataset.timeoutId));
+
+                // Reset after scroll stops
+                const id = setTimeout(() => {
+                    btn.classList.add('text-white/50');
+                    btn.classList.remove('text-white', 'scale-110');
+                }, 200);
+
+                btn.dataset.timeoutId = id.toString();
+            }
+
+            lastScrollLeft = currentScrollLeft;
+        });
+    }
+});
+
+function scrollPinnedCards(direction) {
+    const container = document.getElementById('pinned-cards-container');
+    if (container) {
+        const scrollAmount = container.clientWidth; // Scroll by one screen width
+        const currentScroll = container.scrollLeft;
+
+        if (direction === 'left') {
+            container.scrollTo({
+                left: currentScroll - scrollAmount,
+                behavior: 'smooth'
+            });
+        } else if (direction === 'right') {
+            container.scrollTo({
+                left: currentScroll + scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+    }
+}
